@@ -1,44 +1,56 @@
-<div class="flex">
 
-    <div class="bg-blue-800 text-white p-4">
-        <span class="notice-caption">Noticias</span>
-    </div>
-    <div class="w-2"></div>
-    <div class="bg-white p-4">
-        <a href="https://uets.edu.ec/2023/11/06/cuenca-la-uets-te-saluda/" class="news-notice-title text-black">Cuenca, la UETS te saluda!</a>
-    </div>
-</div>
-
-
-<div class="bg-blue-500 text-white p-4">
-    <div class="flex justify-between items-center">
-        <div class="date-section">lunes, enero 22, 2024</div>
+<!--FECHA/ICONOS-->
+    <div class="bg-blue-500 text-white p-4 flex justify-between items-center">
+        <span>{{ today }}</span>
         <div class="flex space-x-4">
-            <a href="https://www.facebook.com/uetscuenca" target="_blank" class="text-white">Facebook</a>
-            <a href="https://twitter.com/uetscue" target="_blank" class="text-white">Twitter</a>
-            <a href="https://www.youtube.com/channel/UCcGCBVZSL_go2Xd6avCfXwQ" target="_blank" class="text-white">YouTube</a>
-            <a href="https://www.instagram.com/uetscuenca/" target="_blank" class="text-white">Instagram</a>
-        </div>
-    </div>
-</div>
-<div class="bg-blue-700 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <div class="site-logo">
-            <a href="https://uets.edu.ec/" class="custom-logo-link" rel="home" aria-current="page">
-                <img src="https://i0.wp.com/uets.edu.ec/wp-content/uploads/2019/07/Logo_UETS_Transparente.png?fit=185%2C182&amp;ssl=1" alt="Logo" class="custom-logo">
-                <h1 class="text-lg font-bold text-center">UETS</h1>
+            <a href="https://www.facebook.com/uetscuenca" target="_blank" class="text-white">
+                <img src="assets/icon-facebook.png" alt="Facebook" style= "height: 20px; width: 30px;">
+            </a>
+            <a href="https://twitter.com/uetscue" target="_blank" class="text-white"> 
+                <img src="assets/icon-x.png" alt="Facebook" style= "height: 20px; width: 30px;">
+            </a>
+            <a href="https://www.instagram.com/uetscuenca/" target="_blank" class="text-white">
+                <img src="assets/icon-youtube.png" alt="Facebook" style= "height: 20px; width: 30px;">
+            </a>
+            <a href="https://www.youtube.com/channel/UCcGCBVZSL_go2Xd6avCfXwQ" target="_blank" class="text-white">
+                <img src="assets/icon-instagram.png" alt="Facebook" style= "height: 20px; width: 30px;">
             </a>
         </div>
-        <nav>
-            <ul class="flex space-x-4">
-                <li><a href="#" class="text-white">Quiénes somos</a></li>
-                <li><a href="#" class="text-white">Proyecto Educativo</a></li>
-                <li><a href="#" class="text-white">Oferta educativa</a></li>
-                <li><a href="#" class="text-white">Servicios</a></li>
-                <li><a href="#" class="text-white">Comunidad Educativa</a></li>
-                <li><a href="#" class="text-white">Contáctenos</a></li>
-            </ul>
-        </nav>
     </div>
-</div>
 
+
+
+<!--LINEA AMARILLA-->
+<div class="bg-yellow-400 h-1 w-full"></div>
+
+<!--FRANJA AZUL CON LOGO-->
+<div class="bg-blue-700 py-4 w-full relative">
+  <!-- Logo a la izquierda, más grande y superpuesto sobre la franja azul -->
+  <div class="absolute left-4 -bottom-16 z-10"> 
+    <a href="https://uets.edu.ec/">
+      <img src="https://i0.wp.com/uets.edu.ec/wp-content/uploads/2019/07/Logo_UETS_Transparente.png?fit=185%2C182&ssl=1" alt="Logo UETS" class="h-24 w-24"> <!-- Ajusta el tamaño según sea necesario -->
+    </a>
+  </div>
+  <!-- MENU DESPEGABLE-->
+  <div class="ml-auto hidden md:flex" style="padding-left: 300px;">
+
+    <ul class="flex space-x-4">
+      
+      <li class="relative group" *ngFor="let menu of menus">
+        <a href="#" class="flex items-center text-white hover:bg-yellow-500 px-3 py-2 rounded-md"
+          (click)="toggleDropdown(menu)">
+          {{ menu.title }}
+          <svg *ngIf="menu.links && menu.links.length > 0" xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+        <!-- Submenú desplegable -->
+        <ul *ngIf="menu.open" class="absolute hidden group-hover:block bg-blue-800 text-white py-2 mt-2 rounded-md shadow-lg">
+          <li *ngFor="let sublink of menu.links" class="hover:bg-yellow-500 px-3 py-1">
+            <a href="#">{{ sublink }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

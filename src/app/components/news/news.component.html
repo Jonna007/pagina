@@ -1,0 +1,13 @@
+<!--ENCABEZADO NOTICIAS-->
+<div class="flex">
+    <div class="bg-blue-800 p-4 text-white ">
+        <span class="notice-caption justify-between items-center">📢 Noticias 📢</span>
+    </div>
+    <div class="bg-white p-4 overflow-hidden flex-grow" >
+        <ng-container *ngFor="let title of titles; let i = index">
+        <a href="#" *ngIf="currentTitle === i" class="news-notice-title text-black absolute transition-opacity duration-700" [ngStyle]="{'top': currentTitle === i ? '0' : '-100%'}">
+           {{ title }}
+        </a>
+    </ng-container>
+    </div>
+</div>

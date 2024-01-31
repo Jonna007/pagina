@@ -1,0 +1,16 @@
+.bg-blue-800 {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .bg-blue-800::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 30px solid white; /* Ajusta el ancho de la línea según sea necesario */
+    background: linear-gradient(to bottom left, #1e40af 50%, white 50%); /* Ajusta el color para que coincida con tu azul y tu blanco */
+    transform: skewY(65deg); /* Ajusta el ángulo según sea necesario */
+    transform-origin: top right;
+  }
